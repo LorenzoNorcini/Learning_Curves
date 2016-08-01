@@ -5,6 +5,6 @@ The generated learning curve is then plotted.
 The code is written in Python and uses the Machine Learing library SKLearn.
 The dataset used is 20 NewsGroups.
 The following classifiers are analized:
-Multinomial Naive Bayes
-Bernoulli Naive Bayes
-Perceptron
+- Multinomial Naive Bayes
+- Bernoulli Naive Bayes
+- Perceptron

@@ -34,7 +34,7 @@ print "Learning Curve:"
 shuffle = cross_validation.ShuffleSplit(data.shape[0], n_iter=10, random_state=0)
 
 MNB_train_size, train_scores, test_scores = \
-    learning_curve(clfMNB, data, labels, cv=shuffle, n_jobs=4, train_sizes=np.arange(0.01, 1.00, 0.01))
+    learning_curve(clfMNB, data, labels, cv=shuffle, n_jobs=4, train_sizes=np.arange(0.01, 1.00, 0.05))
 
 MNB_avg_test_scores = []
 MNB_avg_train_scores = []
@@ -43,7 +43,7 @@ for k in range(0, len(test_scores)):
     MNB_avg_train_scores.append(np.average(train_scores[k]))
 
 BNB_train_size, train_scores, test_scores = \
-    learning_curve(clfBNB, data, labels, cv=shuffle, n_jobs=4, train_sizes=np.arange(0.01, 1.00, 0.01))
+    learning_curve(clfBNB, data, labels, cv=shuffle, n_jobs=4, train_sizes=np.arange(0.01, 1.00, 0.05))
 
 BNB_avg_test_scores = []
 BNB_avg_train_scores = []
@@ -52,7 +52,7 @@ for k in range(0, len(test_scores)):
     BNB_avg_train_scores.append(np.average(train_scores[k]))
 
 Per_train_size, train_scores, test_scores = \
-    learning_curve(clfPer, data, labels, cv=shuffle, n_jobs=4, train_sizes=np.arange(0.01, 1.00, 0.01))
+    learning_curve(clfPer, data, labels, cv=shuffle, n_jobs=4, train_sizes=np.arange(0.01, 1.00, 0.05))
 
 Per_avg_test_scores = []
 Per_avg_train_scores = []

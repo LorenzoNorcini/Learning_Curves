@@ -10,7 +10,7 @@ class Data_Preprocessor:
 
     def tokenize(self, text):
         tokens = word_tokenize(text)
-        alpha = [t for t in tokens if unicode(t).isalpha()]
+        alpha = [tk for tk in tokens if unicode(tk).isalpha()]
         return alpha
 
     def header_not_fully_removed(self, text):

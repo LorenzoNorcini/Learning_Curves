@@ -46,6 +46,7 @@ print "Number of Samples: " + str(data.shape[0])
 print "Number of Features: " + str(data.shape[1])
 
 print "Learning Curve:"
+start = time.time()
 shuffle = cross_validation.ShuffleSplit(data.shape[0], n_iter=random_samples, random_state=0)
 
 MNB_train_size, train_scores, test_scores = \
@@ -69,22 +70,26 @@ Per_avg_test_scores = [np.average(ts) for ts in test_scores]
 Per_avg_train_scores = [np.average(ts) for ts in train_scores]
 Per_std_deviation = [np.std(ts) for ts in test_scores]
 
+done = time.time()
+elapsed = done - start
+print "Elapsed: " + str(elapsed)
+
 plt.plot(MNB_train_size, MNB_avg_test_scores, label="Multinomial Naive Bayes")
 plt.plot(BNB_train_size, BNB_avg_test_scores, label="Bernoulli Naive Bayes")
 plt.plot(Per_train_size, Per_avg_test_scores, label="Perceptron")
 
 plt.fill_between(MNB_train_size, [x[0]+x[1] for x in zip(MNB_avg_test_scores, MNB_std_deviation)],
-                 [x[0]-x[1] for x in zip(MNB_avg_test_scores, MNB_std_deviation)], color='blue', alpha=0.9)
+                 [x[0]-x[1] for x in zip(MNB_avg_test_scores, MNB_std_deviation)], color='blue', alpha=0.2)
 plt.fill_between(BNB_train_size, [x[0]+x[1] for x in zip(BNB_avg_test_scores, BNB_std_deviation)],
-                 [x[0]-x[1] for x in zip(BNB_avg_test_scores, BNB_std_deviation)], color='green', alpha=0.9)
+                 [x[0]-x[1] for x in zip(BNB_avg_test_scores, BNB_std_deviation)], color='green', alpha=0.2)
 plt.fill_between(Per_train_size, [x[0]+x[1] for x in zip(Per_avg_test_scores, Per_std_deviation)],
-                 [x[0]-x[1] for x in zip(Per_avg_test_scores, Per_std_deviation)], color='red', alpha=0.9)
+                 [x[0]-x[1] for x in zip(Per_avg_test_scores, Per_std_deviation)], color='red', alpha=0.2)
 
 plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=1, ncol=1, mode="expand", borderaxespad=0.)
 
-plt.axis([0, 20000, 0.1, 1])
+plt.axis([0, 20000, 0.25, 0.9])
 plt.xticks(range(0, 20000, 1000))
-plt.yticks(np.arange(0, 1, 0.1))
+plt.yticks(np.arange(0.25, 0.9, 0.1))
 
 for k in range(0, len(MNB_train_size), 5):
     plt.text(MNB_train_size[k], MNB_avg_test_scores[k], str(MNB_avg_test_scores[k]))

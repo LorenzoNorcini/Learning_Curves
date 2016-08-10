@@ -18,8 +18,8 @@ jobs = 4
 
 dp = Data_Preprocessor()
 vectorizer = CountVectorizer(tokenizer=dp.tokenize, stop_words='english', lowercase=True, min_df=2, analyzer="word")
-clfMNB = MultinomialNB(alpha=.01)
-clfBNB = BernoulliNB(alpha=.01)
+clfMNB = MultinomialNB(alpha=.0001)
+clfBNB = BernoulliNB(alpha=.0001)
 clfPer = Perceptron(alpha=.0001)
 
 try:
@@ -56,6 +56,8 @@ MNB_avg_test_scores = [np.average(ts) for ts in test_scores]
 MNB_avg_train_scores = [np.average(ts) for ts in train_scores]
 MNB_std_deviation = [np.std(ts) for ts in test_scores]
 
+print "Multinomial Naive Bayes has finished"
+
 BNB_train_size, train_scores, test_scores = \
     learning_curve(clfBNB, data, labels, cv=shuffle, n_jobs=4, train_sizes=train_sizes)
 
@@ -63,12 +65,16 @@ BNB_avg_test_scores = [np.average(ts) for ts in test_scores]
 BNB_avg_train_scores = [np.average(ts) for ts in train_scores]
 BNB_std_deviation = [np.std(ts) for ts in test_scores]
 
+print "Bernoulli Naive Bayes has finished"
+
 Per_train_size, train_scores, test_scores = \
     learning_curve(clfPer, data, labels, cv=shuffle, n_jobs=4, train_sizes=train_sizes)
 
 Per_avg_test_scores = [np.average(ts) for ts in test_scores]
 Per_avg_train_scores = [np.average(ts) for ts in train_scores]
 Per_std_deviation = [np.std(ts) for ts in test_scores]
+
+print "Perceptron has finished"
 
 done = time.time()
 elapsed = done - start

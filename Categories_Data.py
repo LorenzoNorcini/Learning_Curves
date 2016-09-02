@@ -1,3 +1,7 @@
+"""
+Categories Data: name and label value
+"""
+
 categories = [
     ('alt.atheism', 0),
     ('comp.graphics', 1),

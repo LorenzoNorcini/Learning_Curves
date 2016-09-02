@@ -62,6 +62,7 @@ print "Number of Samples: " + str(data.shape[0])
 print "Number of Features: " + str(data.shape[1])
 
 print "Learning Curve:"
+
 start = time.time()
 # Initializes the Cross Validator
 shuffle = cross_validation.ShuffleSplit(data.shape[0], n_iter=random_samples, random_state=int(time.time()))

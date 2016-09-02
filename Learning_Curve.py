@@ -51,6 +51,7 @@ class Learning_Curve:
         Nothing.
         Plots the learning curve with the given data
     """
+
     @staticmethod
     def plot_curve(train_size, avg_test_scores, avg_train_scores, test_std_deviation, train_std_deviation, name):
         print name
